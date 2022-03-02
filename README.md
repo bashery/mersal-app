@@ -1,1 +1,1 @@
-# all my static site are here.
+# instant messages without websocket
