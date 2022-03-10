@@ -1,1 +1,1 @@
-## An instant message server without a web socket
+## An instant message server without websocket
