@@ -1,1 +1,1 @@
-## An instant message server without websocket
+## instant messaging application for mersal im server
