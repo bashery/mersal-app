@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:http/http.dart' as http;
 
 void main() {
   runApp(const MyApp());
@@ -29,16 +30,31 @@ class MyHomePage extends StatefulWidget {
   State<MyHomePage> createState() => _MyHomePageState();
 }
 
+
 class _MyHomePageState extends State<MyHomePage> {
 
-    final TextEditingController usernameController = TextEditingController();
-    final TextEditingController passwordController = TextEditingController();
+    final TextEditingController username = TextEditingController();
+    final TextEditingController password = TextEditingController();
+    final TextEditingController email = TextEditingController();
   
-  void postData() {
-      setState(() {
-
-      });
-  }
+    postData() async {
+        var response = await http.post(
+            Uri.parse('http://localhost:1323/signup'),
+            body:{
+                "username": username.text,
+                "password": password.text,
+                "email":    email.text
+            },
+        );
+        if (response.statusCode == 200) {
+            print("success:\n ${response.statusCode}");
+            // redirect to home|login page
+        }else {
+            print("status code: ${response.statusCode}");
+        }
+    }
+    
+    void whenPostData() {setState(() {});}
 
   @override
   Widget build(BuildContext context) {
@@ -50,18 +66,17 @@ class _MyHomePageState extends State<MyHomePage> {
         padding: const EdgeInsets.all(30),
         child: Column(
            children: <Widget>[
-            TextField(
-                 controller: usernameController,
-               ),
-            TextField(
-                controller: passwordController,
-               )
+            const Text("username"),
+            TextField(controller: username,),
+            const Text("email"),
+            TextField(controller: email,),
+            const Text("password"),
+            TextField(controller: password,),
             ],
         ),
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: postData,
-        tooltip: 'Increment',
         child: const Icon(Icons.send),
       ), // This trailing comma makes auto-formatting nicer for build methods.
     );
