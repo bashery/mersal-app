@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mersal/chat.dart';
 import 'package:http/http.dart' as http;
 
 void main() {
@@ -47,8 +48,13 @@ class _MyHomePageState extends State<MyHomePage> {
             },
         );
         if (response.statusCode == 200) {
+
+            Navigator.push(context,
+              MaterialPageRoute(builder: (context) => const ChatPage(title: 'chat page')),
+            );
+
             print("success:\n ${response.statusCode}");
-            // redirect to home|login page
+            // redirect to home or login page
         }else {
             print("status code: ${response.statusCode}");
         }
