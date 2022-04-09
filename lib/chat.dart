@@ -1,40 +1,45 @@
 import 'package:flutter/material.dart';
 
-class ChatPage extends StatefulWidget {
-  const ChatPage({Key? key, required this.title}) : super(key: key);
 
-  final String title;
+class ChatPage extends StatefulWidget {
+   const ChatPage({Key? key}) : super(key: key);
+
+  //final String title;
 
   @override
-  State<ChatPage> createState() => _ChatState();
+  State<ChatPage> createState() => _ChatPageState();
 }
 
+class _ChatPageState extends State<ChatPage> {
 
-class _ChatState extends State<ChatPage> {
-
-    final TextEditingController chatFeild = TextEditingController();
-  
-   
-    void whenPostData() {setState(() {});}
+  final TextEditingController  message  = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(widget.title),
+        title: const Text('Second Route'),
       ),
+
       body: Container(      
         padding: const EdgeInsets.all(30),
         child: Column(
            children: <Widget>[
-            TextField(controller: chatFeild,),
+            const Text("message"),
+            TextField(controller: message,),
             ],
         ),
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: ()=>print("send"),
+
+              onPressed: (() {
+                print("pressed button");
+              }),
         child: const Icon(Icons.send),
-      ), // This trailing comma makes auto-formatting nicer for build methods.
+      ), 
+
     );
   }
 }
+
+
