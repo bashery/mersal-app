@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:mersal/chat.dart';
-import 'package:mersal/join.dart';
+import 'package:mersal/contacts.dart';
 
 class UserProfile extends StatefulWidget {
-  const UserProfile({Key? key, required this.title}) : super(key: key);
 
-  final String title;
+   final User user;
+   const UserProfile({Key? key, required this.user}) : super(key: key);
 
   @override
   State<UserProfile> createState() => _UserProfileState();
@@ -13,29 +13,31 @@ class UserProfile extends StatefulWidget {
 
 
 class _UserProfileState extends State<UserProfile> {
-   
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text(widget.title),
+        appBar: AppBar(
+            title: Text(widget.user.username),
       ),
-      body: Container(      
-        padding: const EdgeInsets.all(30),
-        child: Column(
+      body:       
+        //padding: const EdgeInsets.all(30),
+        Column(
            children: <Widget>[
-            const Text("email"),
+            Image.network(
+            widget.user.urlAvarar,height: 400,width: double.infinity,fit:BoxFit.cover,
+            ),
+            Text(widget.user.username,style: const TextStyle(fontSize: 40,fontWeight:FontWeight.bold)),
+            Text(widget.user.email),
              Padding(
                 padding: const EdgeInsets.fromLTRB(30, 50, 30, 30),
                 child:  ElevatedButton(
                   style:null, 
-                  child: const Text("register"),
+                  child: const Text("message"),
                   onPressed: ()=> toChat(),
                ),
              ),
            ],
-        ),
       ),
     );
   }
