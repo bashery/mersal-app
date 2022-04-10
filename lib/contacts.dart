@@ -11,6 +11,7 @@ class Contacts extends StatefulWidget {
 }
 
 class _ContactsState extends State<Contacts> {
+    
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -21,28 +22,28 @@ class _ContactsState extends State<Contacts> {
       body: ListView.builder(
 
         itemCount:7,
-        itemBuilder: (context, index) =>   Card(
-            child: ListTile(
-                leading:  CircleAvatar(
-                    radius: 28,
-                    backgroundImage: NetworkImage("http://placeimg.com/100/100/faces/$index"),
+        itemBuilder: (context, index) {
 
+            final user = users[index];
+           return Card(
+            child: ListTile(
+                leading:   CircleAvatar(
+                    radius: 28,
+                    backgroundImage: NetworkImage("http://placeimg.com/100/100/faces$index"),
                 ),
-                title:  Text(users[index].username),
-                subtitle: Text(users[index].email),
+                title:  Text(user.username),
+                subtitle: Text(user.email),
                 trailing: const Icon(Icons.arrow_forward) ,
                 onTap:(){
-            Navigator.push(context,
-             MaterialPageRoute(builder: (context) =>  UserProfile(title: users[index].username )), // ChatPage()),
-            );
+                Navigator.of(context).push( // push(context,
+                  MaterialPageRoute(builder: (context) =>  UserProfile(user: user)));
                 }
             ),
-        ),
-
-    ),
+          );
+        }
+     ),
     
       floatingActionButton: FloatingActionButton(
-
               onPressed: (() {
                 print("pressed button");
               }),
@@ -69,37 +70,37 @@ List<User> users = [
     const User(
             username: "sarah",
             email: "sarah@email.com",
-            urlAvarar: "http://placeimg.com/300/340/faces/"
+            urlAvarar: "http://placeimg.com/300/340/faces/1"
     ),
     const User(
             username: "siwar",
             email: "siwar@email.com",
-            urlAvarar: "http://placeimg.com/300/340/faces/"
+            urlAvarar: "http://placeimg.com/300/340/faces/2"
     ),
     const User(
             username: "coco",
             email: "coco@email.com",
-            urlAvarar: "http://placeimg.com/300/340/faces/"
+            urlAvarar: "http://placeimg.com/300/340/faces/3"
     ),
     const User(
             username: "sarah",
             email: "sarah@email.com",
-            urlAvarar: "http://placeimg.com/300/340/faces/"
+            urlAvarar: "http://placeimg.com/300/340/faces/4"
     ),
     const User(
             username: "sarah",
             email: "sarah@email.com",
-            urlAvarar: "http://placeimg.com/300/340/faces/"
+            urlAvarar: "http://placeimg.com/300/340/faces/5"
     ),
     const User(
             username: "sarah",
             email: "sarah@email.com",
-            urlAvarar: "http://placeimg.com/300/340/faces/"
+            urlAvarar: "http://placeimg.com/300/340/faces/6"
     ),
      const User(
-            username: "sarah",
-            email: "",
-            urlAvarar: "http://placeimg.com/300/340/faces/"
+            username: "sariha",
+            email: "sariga@email.com",
+            urlAvarar: "http://placeimg.com/300/340/faces/7"
     ),
 ];
 
