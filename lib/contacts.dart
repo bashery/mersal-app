@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mersal/user_profile.dart';
 
 class Contacts extends StatefulWidget {
    const Contacts({Key? key}) : super(key: key);
@@ -22,14 +23,19 @@ class _ContactsState extends State<Contacts> {
         itemCount:7,
         itemBuilder: (context, index) =>   Card(
             child: ListTile(
-                leading: CircleAvatar(
+                leading:  CircleAvatar(
                     radius: 28,
                     backgroundImage: NetworkImage("http://placeimg.com/100/100/faces/$index"),
 
                 ),
-                title:  Text("Username $index"),
-                subtitle: Text("email $index"),
+                title:  Text(users[index].username),
+                subtitle: Text(users[index].email),
                 trailing: const Icon(Icons.arrow_forward) ,
+                onTap:(){
+            Navigator.push(context,
+             MaterialPageRoute(builder: (context) =>  UserProfile(title: users[index].username )), // ChatPage()),
+            );
+                }
             ),
         ),
 
@@ -40,7 +46,7 @@ class _ContactsState extends State<Contacts> {
               onPressed: (() {
                 print("pressed button");
               }),
-        child: const Icon(Icons.send),
+              child: const Icon(Icons.redo),
       ), 
 
     );
@@ -66,13 +72,13 @@ List<User> users = [
             urlAvarar: "http://placeimg.com/300/340/faces/"
     ),
     const User(
-            username: "sarah",
-            email: "sarah@email.com",
+            username: "siwar",
+            email: "siwar@email.com",
             urlAvarar: "http://placeimg.com/300/340/faces/"
     ),
     const User(
-            username: "sarah",
-            email: "sarah@email.com",
+            username: "coco",
+            email: "coco@email.com",
             urlAvarar: "http://placeimg.com/300/340/faces/"
     ),
     const User(
@@ -95,7 +101,6 @@ List<User> users = [
             email: "",
             urlAvarar: "http://placeimg.com/300/340/faces/"
     ),
-
 ];
 
 
