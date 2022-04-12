@@ -33,13 +33,14 @@ class _ChatPageState extends State<ChatPage> {
       floatingActionButton: FloatingActionButton(
 
               onPressed: (() {
-                print("pressed button");
+                print("going to chat");
               }),
         child: const Icon(Icons.send),
       ), 
 
     );
   }
+
 }
 
 

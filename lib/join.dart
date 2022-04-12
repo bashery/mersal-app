@@ -2,11 +2,11 @@ import 'package:flutter/material.dart';
 //import 'package:mersal/chat.dart';
 import 'package:mersal/contacts.dart';
 import 'package:http/http.dart' as http;
+import 'package:mersal/profile.dart';
 
 
 class RegisterPage extends StatefulWidget {
   const RegisterPage({Key? key, required this.title}) : super(key: key);
-
   final String title;
 
   @override
@@ -16,7 +16,6 @@ class RegisterPage extends StatefulWidget {
 
 class _RegisterPageState extends State<RegisterPage> {
 
-    final TextEditingController username = TextEditingController();
     final TextEditingController password = TextEditingController();
     final TextEditingController email = TextEditingController();
   
@@ -24,7 +23,6 @@ class _RegisterPageState extends State<RegisterPage> {
         var response = await http.post(
             Uri.parse('http://localhost:3000/signup'),
             body:{
-                "username": username.text,
                 "password": password.text,
                 "email":    email.text
             },
@@ -48,18 +46,31 @@ class _RegisterPageState extends State<RegisterPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(widget.title),
+       title : Text(widget.title),
+       //leading:IconButton(icon:const Icon(Icons.person),  onPressed: (){toProfile;},
       ),
       body: Container(      
         padding: const EdgeInsets.all(30),
         child: Column(
            children: <Widget>[
-            const Text("username"),
-            TextField(controller: username,),
-            const Text("email"),
-            TextField(controller: email,),
-            const Text("password"),
-            TextField(controller: password,),
+            Padding(padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 16),
+            child: TextFormField(
+                controller: email,
+                decoration: const InputDecoration(
+                    border: UnderlineInputBorder(),
+                    labelText:  'inter your email',
+                ),    
+            ),
+            ),
+            Padding(padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 16),
+            child: TextFormField(
+                controller: password,
+                decoration: const InputDecoration(
+                    border: UnderlineInputBorder(),
+                    labelText:  'inter your password',
+                ),    
+            ),
+            ),
             ],
         ),
       ),
@@ -69,6 +80,7 @@ class _RegisterPageState extends State<RegisterPage> {
       ), // This trailing comma makes auto-formatting nicer for build methods.
     );
   }
+
 }
 
 class LoginPage extends StatefulWidget {
@@ -95,10 +107,25 @@ class _LoginPageState extends State<LoginPage> {
         padding: const EdgeInsets.all(30),
         child: Column(
            children: <Widget>[
-            const Text("email"),
-            TextField(controller: email),
-            const Text("password"),
-            TextField(controller: password),
+            Padding(padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 16),
+            child: TextFormField(
+                controller: email,
+                decoration: const InputDecoration(
+                    border: UnderlineInputBorder(),
+                    labelText:  'inter your email',
+                ),    
+            ),
+            ),
+             Padding(padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 16),
+            child: TextFormField(
+                controller: password,
+                decoration: const InputDecoration(
+                    border: UnderlineInputBorder(),
+                    labelText:  'inter your password',
+                ),    
+            ),
+            ),
+ 
             Padding(
                 padding: const EdgeInsets.fromLTRB(30, 50, 30, 30),
                 child:  ElevatedButton(
@@ -115,10 +142,20 @@ class _LoginPageState extends State<LoginPage> {
                   onPressed: ()=> toRegister(),
                ),
              ),
+                Padding(
+                padding: const EdgeInsets.fromLTRB(30, 50, 30, 30),
+                child:  ElevatedButton(
+                  style:null, 
+                  child: const Text("my profile"),
+                  onPressed: ()=> toProfile(),
+               ),
+             ),
            ],
         ),
       ),
     );
+
+
   }
  
 
@@ -151,6 +188,12 @@ class _LoginPageState extends State<LoginPage> {
     Navigator.push(context,
     MaterialPageRoute(builder: (context) => const RegisterPage(title:"register")));
   }
+
+   toProfile(){
+    Navigator.push(context,
+    MaterialPageRoute(builder: (context) => const Profile(title:"my Profile")));
+  }
+
 }
 
 
