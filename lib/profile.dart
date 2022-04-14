@@ -23,13 +23,15 @@ class  _ProfileState extends State<Profile> {
         var response = await http.post(
             Uri.parse(url+'/putinfo'),
             body:{
-                "username": username.text,
+                "data": username.text,
+                "colomn": "avatarlink",
                 "userid": "63",
             },
         );
         if (response.statusCode == 200) {
         // TODO add hint or tost &&
         // redirect to home or login page
+            username.text = "";
             print("success code: ${response.statusCode}");             
         } else {
             print("error code: ${response.statusCode} ");
