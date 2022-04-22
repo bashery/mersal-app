@@ -127,7 +127,7 @@ class _LoginPageState extends State<LoginPage> {
             ),
  
             Padding(
-                padding: const EdgeInsets.fromLTRB(30, 50, 30, 30),
+                padding: const EdgeInsets.fromLTRB(30, 40, 30, 20),
                 child:  ElevatedButton(
                   style:null, 
                   child: const Text("Login"),
@@ -135,7 +135,7 @@ class _LoginPageState extends State<LoginPage> {
                ),
              ),
             Padding(
-                padding: const EdgeInsets.fromLTRB(30, 50, 30, 30),
+                padding: const EdgeInsets.fromLTRB(30, 40, 30, 20),
                 child:  ElevatedButton(
                   style:null, 
                   child: const Text("or Register"),
@@ -143,7 +143,7 @@ class _LoginPageState extends State<LoginPage> {
                ),
              ),
                 Padding(
-                padding: const EdgeInsets.fromLTRB(30, 50, 30, 30),
+                padding: const EdgeInsets.fromLTRB(30, 40, 30, 20),
                 child:  ElevatedButton(
                   style:null, 
                   child: const Text("my profile"),

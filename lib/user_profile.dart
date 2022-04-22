@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:mersal/chat.dart';
 import 'package:mersal/contacts.dart';
 
+
 class UserProfile extends StatefulWidget {
 
    final User user;

@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 //import 'package:mersal/contacts.dart';
 import 'package:http/http.dart' as http;
 
-
 var url = 'http://localhost:3000';
 
 class Profile extends StatefulWidget {
