@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
+//import 'package:requests/requests.dart';
 
 var url = 'http://localhost:3000';
 
@@ -17,8 +18,7 @@ class  _ProfileState extends State<ChatPage2> {
     final TextEditingController username = TextEditingController();
   
     postData() async {
-
-            var response = await http.post(
+        var response = await http.post(
             Uri.parse(url+'/putinfo'),
             body:{
                 "data": username.text,
@@ -32,6 +32,29 @@ class  _ProfileState extends State<ChatPage2> {
         } else {
             print("error code: ${response.statusCode} ");
         }
+
+
+       /*
+        var r = await Requests.post(url+'/putinfo',
+            body:{
+                "data": username.text,
+                "colomn": "username",
+                "userid": "63",
+            },
+            // bodyEncoding: RequestBodyEncoding.FormURLEncoded
+        );
+
+        r.raiseForStatus();
+        if (r.statusCode == 200) {
+            //username.text = "";
+            print("success code: ${r.statusCode}");             
+        } else {
+            print("error code: ${r.statusCode} ");
+        }
+        print(r.content().toString());
+
+ 
+        */
     }
     
     void whenPostData() {setState(() {});}
