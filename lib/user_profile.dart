@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mersal/chat.dart';
+import 'package:mersal/chat2.dart';
 import 'package:mersal/contacts.dart';
 
 
@@ -38,6 +39,14 @@ class _UserProfileState extends State<UserProfile> {
                   onPressed: ()=> toChat(),
                ),
              ),
+            Padding(
+                padding: const EdgeInsets.fromLTRB(30, 50, 30, 30),
+                child:  ElevatedButton(
+                  style:null, 
+                  child: const Text("message"),
+                  onPressed: ()=> toChat2(),
+               ),
+             ),
            ],
       ),
     );
@@ -46,6 +55,10 @@ class _UserProfileState extends State<UserProfile> {
   void toChat(){
     Navigator.push(context,
     MaterialPageRoute(builder: (context) => const ChatPage()));
+  }
+  void toChat2(){
+    Navigator.push(context,
+    MaterialPageRoute(builder: (context) => const ChatPage2(title: "hello chat")));
   }
   void whenPostData() {setState(() {});}
 }

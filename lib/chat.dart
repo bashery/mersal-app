@@ -15,27 +15,6 @@ class Message {
     });
 }
 
-List<Message> messages = [
-Message(text: "hello",        date:DateTime.parse('2022-03-20 00:00'),byMe: true),
-Message(text: "hi",           date:DateTime.parse('2022-03-20 00:00'),byMe: false),
-Message(text: "How are u?",   date:DateTime.parse('2022-03-20 00:00'),byMe: true),
-Message(text: "fine",         date:DateTime.parse('2022-03-20 00:00'),byMe: true),
-Message(text: "are you ok?",  date:DateTime.parse('2022-03-20 00:00'),byMe: false),
-Message(text: "littel bit",   date:DateTime.parse('2022-03-20 00:01'),byMe: false),
-Message(text: "than not gool",date:DateTime.parse('2022-03-20 00:01'),byMe: true),
-Message(text: "sure ?",       date:DateTime.parse('2022-03-20 00:01'),byMe: false),
-Message(text: "yeah!",        date:DateTime.parse('2022-04-20 00:01'),byMe: true),
-Message(text: "do you speak", date:DateTime.parse('2022-04-20 01:02'),byMe: false),
-Message(text: "I speak ar v", date:DateTime.parse('2022-04-20 01:00'),byMe: true),
-Message(text: "thats cool",   date:DateTime.parse('2022-04-20 01:00'),byMe: false),
-Message(text: "I speak ar v", date:DateTime.parse('2022-04-20 01:00'),byMe: true),
-Message(text: "thats cool",   date:DateTime.parse('2022-04-20 01:00'),byMe: false),
-Message(text: "I speak ar v", date:DateTime.parse('2022-04-20 01:00'),byMe: true),
-Message(text: "thats cool",   date:DateTime.parse('2022-04-20 01:00'),byMe: false),
-Message(text: "I speak ar v", date:DateTime.parse('2022-04-20 01:00'),byMe: true),
-Message(text: "thats cool",   date:DateTime.parse('2022-04-20 01:00'),byMe: false),
-];
-
 class ChatPage extends StatefulWidget {
    const ChatPage({Key? key}) : super(key: key);
 
@@ -48,7 +27,7 @@ class ChatPage extends StatefulWidget {
 class _ChatPageState extends State<ChatPage> {
 
     ScrollController scrollController =  ScrollController();
-  final TextEditingController  message  = TextEditingController();
+    final TextEditingController  message  = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -63,7 +42,6 @@ class _ChatPageState extends State<ChatPage> {
                 padding: const EdgeInsets.all(8),
                 elements: messages,
                 groupBy: (msg) => DateTime(msg.date.year, msg.date.month, msg.date.day),
-
                 useStickyGroupSeparators: true,
                 floatingHeader: true,
                 groupHeaderBuilder: (Message message) =>  SizedBox(
@@ -99,36 +77,44 @@ class _ChatPageState extends State<ChatPage> {
                     final msg = Message(text: text, date: DateTime.now(), byMe: true);
                     setState(() {
                         messages.add(msg);
-                        text='';
-
-                        if (scrollController.hasClients) {
-                                scrollController.jumpTo(10);
-                                scrollController.animateTo(
-                                  scrollController.position.minScrollExtent,
-                                  duration: const Duration(milliseconds: 300),
-                                  curve: Curves.easeOut,
-                                );
-
-                        }
-
-
-                        
+                        scrollUp();
                     });
-                      
-
                 },
-
             ),
-            
         ),
         ],
       ),
-      
-
-
-    );
+      ); 
   }
 
+
+  void scrollUp() {
+    final end = scrollController.position.maxScrollExtent;
+    scrollController.jumpTo(end);
+    
+  }
 }
+
+
+List<Message> messages = [
+Message(text: "hello",        date:DateTime.parse('2022-03-20 00:00'),byMe: true),
+Message(text: "hi",           date:DateTime.parse('2022-03-20 00:00'),byMe: false),
+Message(text: "How are u?",   date:DateTime.parse('2022-03-20 00:00'),byMe: true),
+Message(text: "fine",         date:DateTime.parse('2022-03-20 00:00'),byMe: true),
+Message(text: "are you ok?",  date:DateTime.parse('2022-03-20 00:00'),byMe: false),
+Message(text: "littel bit",   date:DateTime.parse('2022-03-20 00:01'),byMe: false),
+Message(text: "than not gool",date:DateTime.parse('2022-03-20 00:01'),byMe: true),
+Message(text: "sure ?",       date:DateTime.parse('2022-03-20 00:01'),byMe: false),
+Message(text: "yeah!",        date:DateTime.parse('2022-04-20 00:01'),byMe: true),
+Message(text: "do you speak", date:DateTime.parse('2022-04-20 01:02'),byMe: false),
+Message(text: "I speak ar v", date:DateTime.parse('2022-04-20 01:00'),byMe: true),
+Message(text: "thats cool",   date:DateTime.parse('2022-04-20 01:00'),byMe: false),
+Message(text: "I speak ar v", date:DateTime.parse('2022-04-20 01:00'),byMe: true),
+Message(text: "thats cool",   date:DateTime.parse('2022-04-20 01:00'),byMe: false),
+Message(text: "I speak ar v", date:DateTime.parse('2022-04-20 01:00'),byMe: true),
+Message(text: "thats cool",   date:DateTime.parse('2022-04-20 01:00'),byMe: false),
+Message(text: "I speak ar v", date:DateTime.parse('2022-04-20 01:00'),byMe: true),
+Message(text: "thats cool",   date:DateTime.parse('2022-04-20 01:00'),byMe: false),
+];
 
 
